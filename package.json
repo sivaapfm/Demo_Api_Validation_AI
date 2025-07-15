@@ -7,7 +7,7 @@
     "lint": "eslint . --ext .ts",
     "generate-tests": "ts-node src/generators/generateTests.ts",
     "qa-generate": "ts-node scripts/qa-test-generator.ts",
-    "qa-examples": "ts-node scripts/qa-examples.ts"
+    "demo": "ts-node scripts/demo.ts"
   },
   "devDependencies": {
     "@types/node": "^20.5.0",

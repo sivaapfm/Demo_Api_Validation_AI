@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is an intelligent API test generation framework built with TypeScript, Vitest, and automated test case generation. The framework can automatically generate comprehensive test suites for any REST API based on configuration or OpenAPI specifications.
+This is an intelligent API test generation framework built with TypeScript, Vitest, and automated test case generation. The framework can automatically generate comprehensive test suites for REST APIs based on manual configuration or through AI-enhanced test generation.
 
 ## 🏗️ Architecture
 
@@ -13,21 +13,22 @@ demo-api-validation-ai/
 ├── src/
 │   ├── types.ts              # Type definitions for endpoints, parameters, scenarios
 │   ├── agents/
-│   │   └── TestGenAgent.ts   # Main test generation agent
+│   │   ├── TestGenAgent.ts   # Main test generation agent
+│   │   ├── QATestAgent.ts    # AI-powered QA test agent
+│   │   └── GPTTestEnhancer.ts # GPT-4 test enhancement
 │   ├── generators/
 │   │   ├── generateTestCases.ts  # Core test generation logic
 │   │   └── generateTests.ts      # CLI script for batch generation
 │   ├── configs/
-│   │   └── apiConfigs.ts     # Pre-configured API definitions
+│   │   └── apiConfigs.ts     # Pre-configured API definitions (geocoding, countries, posts)
 │   ├── utils/
 │   │   └── openAPIImporter.ts    # OpenAPI/Swagger import utility
 │   └── tests/
 │       ├── .env              # Environment variables (API keys)
 │       └── *.test.ts         # Generated test files
-├── examples/
-│   └── petstore.yaml         # Example OpenAPI spec
 ├── scripts/
-│   └── test-openapi-import.ts    # OpenAPI import testing script
+│   ├── demo.ts               # Complete framework demonstration
+│   └── qa-test-generator.ts  # Interactive QA test generation
 ├── vitest.config.ts          # Vitest configuration
 └── package.json
 ```
@@ -131,31 +132,17 @@ const APIs = {
 pnpm run generate-tests myapi
 ```
 
-### Method 2: OpenAPI/Swagger Import
+### Method 2: AI-Enhanced Testing
 
-1. **From a local file:**
-
-```typescript
-import { OpenAPIImporter } from './src/utils/openAPIImporter'
-
-const endpoints = OpenAPIImporter.fromFile('./my-api-spec.yaml')
-endpoints.forEach(endpoint => {
-  const agent = new TestGenAgent(endpoint)
-  const testCode = await agent.generate()
-  // Save test code to file
-})
-```
-
-2. **From a URL:**
-
-```typescript
-const endpoints = await OpenAPIImporter.fromURL('https://api.example.com/openapi.json')
-```
-
-3. **Test the import:**
+Use the QA Test Agent for intelligent test generation:
 
 ```bash
-npx ts-node scripts/test-openapi-import.ts
+# Start interactive QA test generation
+pnpm run qa-generate
+
+# Select from available APIs: geocoding, countries, posts
+# Enter business-focused testing requirements
+# Get AI-generated comprehensive test scenarios
 ```
 
 ### Method 3: CLI Generation

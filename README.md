@@ -71,12 +71,11 @@ OPENAI_API_KEY=your_openai_api_key
 # Add any API keys your tests need
 ```
 
-## 📊 Example APIs Included
+## 📊 Core APIs Included
 
-- **Google Maps Geocoding API**: Address geocoding with validation
-- **REST Countries API**: Country information lookup
-- **JSONPlaceholder API**: Sample posts and users
-- **OpenAPI Examples**: Petstore API via Swagger import
+- **Google Maps Geocoding API**: Address validation and geocoding services
+- **REST Countries API**: Country information and data lookup
+- **JSONPlaceholder Posts API**: Social media posts and content management
 
 Built with ❤️ for effortless API testing.
 - **OpenAPI/Swagger import** to automatically generate tests from existing API documentation

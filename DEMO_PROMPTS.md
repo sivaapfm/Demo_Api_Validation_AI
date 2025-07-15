@@ -1,4 +1,4 @@
-# Company Tech Demo: Sample QA Prompts
+# API Test Framework: Demo Prompts
 
 ## 🎯 Demo Script for API Test Framework
 
@@ -6,137 +6,101 @@
 
 1. **Framework Overview** (2-3 minutes)
 2. **Live Demo: Rule-Based vs GPT-4** (5 minutes)
-3. **QA Engineer Scenarios** (8-10 minutes)
+3. **Core API Testing Scenarios** (8-10 minutes)
 4. **Business Impact & ROI** (3-5 minutes)
 5. **Q&A** (5 minutes)
 
 ---
 
-## 🚀 Demo Scenario 1: E-Commerce Payment API
+## �️ Demo Scenario 1: Google Maps Geocoding API
 
-### **Setup:** "Imagine we're testing our payment processing API"
-
-**QA Prompt:**
-```
-"Test our payment processing API to ensure it handles real-world scenarios like 
-expired credit cards, network timeouts, partial payments, currency conversion 
-errors, and fraud detection while maintaining PCI DSS compliance."
-```
-
-**Additional Details:**
-- **Business Logic:** "Payments must be atomic - either fully processed or fully rolled back"
-- **Risk Areas:** "Financial loss, compliance violations, customer trust"
-- **User Scenarios:** "International customers, mobile payments, subscription renewals"
-
-**Expected Output:** ~12-15 test scenarios including security, compliance, and edge cases
-
----
-
-## 🛡️ Demo Scenario 2: User Authentication API
-
-### **Setup:** "Testing our core authentication system"
+### **Setup:** "Testing our address validation and geocoding service"
 
 **QA Prompt:**
 ```
-"Validate our user authentication API including password complexity rules, 
-account lockout policies, multi-factor authentication, session management, 
-and protection against brute force attacks while ensuring accessibility compliance."
+"Test our Google Maps Geocoding API to ensure accurate address validation, 
+international address support, proper error handling for invalid addresses, 
+API key validation, and rate limiting compliance. Focus on edge cases like 
+incomplete addresses, special characters, and non-English text."
 ```
 
 **Additional Details:**
-- **Business Logic:** "Account lockout after 5 failed attempts, session timeout after 30 minutes"
-- **Risk Areas:** "Unauthorized access, credential stuffing, account takeover"
-- **Focus Areas:** "Security, compliance, user experience, accessibility"
+- **Business Logic:** "Address validation for delivery services and location-based features"
+- **Risk Areas:** "Incorrect location data, failed deliveries, API quota overuse"
+- **User Scenarios:** "International customers, mobile app usage, bulk address processing"
 
-**Expected Output:** ~10-12 test scenarios covering security and user experience
+**Expected Output:** ~10-12 test scenarios including validation, authentication, and edge cases
 
 ---
 
-## 📊 Demo Scenario 3: Customer Data API (GDPR Focus)
+## 🌍 Demo Scenario 2: REST Countries API
 
-### **Setup:** "Testing our customer data handling for European customers"
+### **Setup:** "Testing our country information lookup service"
 
 **QA Prompt:**
 ```
-"Test our customer data API to ensure GDPR compliance including data portability, 
-right to deletion, consent management, data minimization, and cross-border 
-transfer restrictions. Validate audit trails and breach notification capabilities."
+"Test our REST Countries API to validate country data accuracy, name variations 
+handling, case-insensitive search, proper error responses for invalid countries, 
+and comprehensive country information retrieval. Ensure support for different 
+name formats and special characters."
 ```
 
 **Additional Details:**
-- **Compliance Requirements:** "GDPR, CCPA, data retention policies"
-- **Risk Areas:** "Regulatory fines, data breaches, privacy violations"
-- **Business Logic:** "Data must be anonymized after 2 years, deletion within 30 days"
+- **Business Logic:** "Country data for international business, shipping restrictions, compliance"
+- **Risk Areas:** "Outdated country information, incorrect shipping rules, compliance violations"
+- **User Scenarios:** "E-commerce checkout, international transfers, compliance reporting"
 
-**Expected Output:** ~8-10 compliance-focused test scenarios
+**Expected Output:** ~8-10 test scenarios covering search variations and error handling
 
 ---
 
-## 🏥 Demo Scenario 4: Healthcare API (High Reliability)
+## � Demo Scenario 3: JSONPlaceholder Posts API
 
-### **Setup:** "Testing a patient record API for a healthcare system"
+### **Setup:** "Testing our content management and social media posts API"
 
 **QA Prompt:**
 ```
-"Test our patient records API for a healthcare system where downtime means 
-life-or-death situations. Validate data integrity, HIPAA compliance, emergency 
-access protocols, audit logging, and failover mechanisms. Ensure 99.99% uptime."
+"Test our JSONPlaceholder Posts API to validate post retrieval, user-specific 
+filtering, pagination limits, data integrity, and proper JSON response formatting. 
+Focus on boundary conditions for user IDs and result limits, ensuring consistent 
+data structure across all responses."
 ```
 
 **Additional Details:**
-- **Business Logic:** "Emergency override must work even during system maintenance"
-- **Risk Areas:** "Patient safety, data breaches, regulatory violations"
-- **User Scenarios:** "Emergency room access, scheduled procedures, insurance verification"
+- **Business Logic:** "Content management system for social media platform"
+- **Risk Areas:** "Data exposure, performance degradation, inconsistent user experience"
+- **User Scenarios:** "Social media feeds, content moderation, user analytics"
 
-**Expected Output:** ~15-18 test scenarios including reliability and compliance
-
----
-
-## 🌍 Demo Scenario 5: International Shipping API
-
-### **Setup:** "Testing our global shipping calculation API"
-
-**QA Prompt:**
-```
-"Test our international shipping API that calculates rates across 190+ countries. 
-Validate currency conversion, customs regulations, restricted items, address 
-validation, and real-time carrier integration. Handle Brexit, sanctions, and 
-trade restrictions."
-```
-
-**Additional Details:**
-- **Business Logic:** "Restricted items vary by destination country and carrier"
-- **Risk Areas:** "Incorrect shipping costs, customs violations, delivery failures"
-- **Focus Areas:** "Internationalization, regulatory compliance, data accuracy"
-
-**Expected Output:** ~12-14 test scenarios covering global complexity
+**Expected Output:** ~6-8 test scenarios covering filtering, validation, and data consistency
 
 ---
 
-## ⚡ Quick Demo Prompts (2-3 minutes each)
+## ⚡ Quick Demo Commands
 
-### **Financial Services:**
-```
-"Test our loan approval API for bias prevention, fair lending compliance, 
-and accurate credit scoring while protecting sensitive financial data."
-```
+### **Generate Tests for Core APIs:**
+```bash
+# Generate tests for geocoding API
+pnpm run generate-tests geocoding
 
-### **IoT Device Management:**
-```
-"Test our IoT device management API for firmware updates, security patches, 
-device authentication, and handling millions of concurrent connections."
-```
+# Generate tests for countries API  
+pnpm run generate-tests countries
 
-### **Content Moderation:**
-```
-"Test our content moderation API for detecting harmful content, false positives, 
-multilingual support, and appeals process while maintaining free speech principles."
+# Generate tests for posts API
+pnpm run generate-tests posts
+
+# Generate tests for all APIs
+pnpm run generate-tests all
 ```
 
-### **Real Estate Platform:**
-```
-"Test our property listing API for accurate pricing algorithms, image processing, 
-location verification, and integration with MLS systems across different markets."
+### **Run Generated Tests:**
+```bash
+# Run all tests
+pnpm test
+
+# Run specific API tests
+pnpm test geocoding.test.ts
+pnpm test countries.test.ts  
+pnpm test posts.test.ts
 ```
 
 ---
@@ -156,13 +120,13 @@ pnpm run generate-tests all
 pnpm run qa-generate
 ```
 
-### **Live QA Generation (5 minutes)**
-**Choose:** Payment API scenario (most relatable to business)
+### **Live Test Generation (5 minutes)**
+**Choose:** Geocoding API scenario (visual and relatable)
 
-1. **Select API:** Geocoding (simple, visual)
-2. **Enter Prompt:** Payment processing scenario
-3. **Show Results:** Generated test code + QA report
-4. **Run Tests:** Live execution
+1. **Select API:** Geocoding (address validation)
+2. **Enter Prompt:** Address validation for delivery services
+3. **Show Results:** Generated test code + comprehensive scenarios
+4. **Run Tests:** Live execution with real API calls
 
 ### **Business Impact (2 minutes)**
 > "What used to take our QA team 2-3 days now takes 10 minutes. 
@@ -247,65 +211,69 @@ Savings: $1,500 per API (94% reduction)
 
 ## 🚀 Interactive Demo Commands
 
-### **Start with Basic Generation:**
+### **Core API Test Generation:**
 ```bash
+# Generate tests for geocoding API
 pnpm run generate-tests geocoding
 cat src/tests/geocoding.test.ts | head -30
+
+# Generate tests for countries API
+pnpm run generate-tests countries
+cat src/tests/countries.test.ts | head -20
+
+# Generate tests for posts API
+pnpm run generate-tests posts
+cat src/tests/posts.test.ts | head -20
 ```
 
-### **Show GPT-4 Enhancement:**
+### **GPT-4 Enhancement Demo:**
 ```bash
 pnpm run qa-generate
 # Select: geocoding API
 # Prompt: "Test address validation for emergency services dispatch"
 ```
 
-### **Run the Tests:**
+### **Run Generated Tests:**
 ```bash
+# Run all tests
 pnpm test
-```
 
-### **Show QA Examples:**
-```bash
-pnpm run qa-examples
+# Run specific API tests
+pnpm test geocoding.test.ts
+pnpm test countries.test.ts
+pnpm test posts.test.ts
 ```
 
 ---
 
-## 💡 Audience-Specific Variations
+## 💡 Audience-Specific Messaging
 
 ### **For Engineering Leadership:**
-Focus on: Technical debt reduction, team productivity, code quality
+Focus on: Technical debt reduction, automated testing, standardized test quality
 
 ### **For Product Management:**
-Focus on: Faster releases, reduced bugs, better user experience
+Focus on: Faster releases, reduced bugs, improved user experience
 
 ### **For QA Teams:**
-Focus on: Enhanced capabilities, strategic work, comprehensive coverage
-
-### **For Security Teams:**
-Focus on: Automated vulnerability detection, compliance validation
+Focus on: Enhanced capabilities, comprehensive coverage, strategic work over manual coding
 
 ### **For Executive Leadership:**
-Focus on: ROI, risk reduction, competitive advantage
+Focus on: ROI calculation, risk reduction, competitive advantage
 
 ---
 
-## 🎯 Demo Backup Plans
+## 🎯 Demo Success Points
 
-### **If Live Demo Fails:**
-- Pre-generated test files ready to show
-- Screenshots/videos of successful runs
-- Focus on business value and ROI
+### **Key Messages:**
+1. **Speed:** Generate tests in minutes instead of days
+2. **Quality:** More comprehensive coverage than manual testing
+3. **Consistency:** Same high standards across all APIs
+4. **Intelligence:** AI discovers edge cases humans miss
+5. **Business Value:** Focus on real business scenarios and risks
 
-### **If Questions About Cost:**
-- Show ROI calculation
-- Compare to manual testing costs
-- Emphasize bug prevention value
+### **Available APIs to Demo:**
+- **Google Maps Geocoding:** Address validation, location services
+- **REST Countries:** International data, country lookup
+- **JSONPlaceholder Posts:** Content management, social media
 
-### **If Questions About AI Reliability:**
-- Show fallback to rule-based generation
-- Demonstrate human review process
-- Highlight AI as enhancement, not replacement
-
-**Remember:** The goal is to show business value, not just technical features!
+**Remember:** Choose the API most relevant to your audience and their business needs!
